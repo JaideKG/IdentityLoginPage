@@ -1,0 +1,52 @@
+﻿@using IdentityLoginPage.Models;
+
+<h2>Menu</h2>
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<form action="~/Home/MenuByDescription" method="get">
+    <label>
+        Search by description:
+        <input type="text" name="description" class="form-control" />
+    </label>
+    <input type="submit" value="Search by Description" class="btn btn-primary" />
+</form>
+<br />
+@*<form action="~/Home/BookListByStatus" method="get">
+        <label>
+            Search by status:
+            <select name="status">
+                @foreach (Status s in ViewBag.Statuses)
+                {
+                    <option value="@s.StatusID">@s.Status1</option>
+                }
+            </select>
+        </label>
+        <input type="submit" value="Search by Status" class="btn btn-primary" />
+    </form>*@
+
+<table class="table table-bordered">
+    <tr>
+        <th><a href="~/Home/MenuSorted?column=ID">ID</a></th>
+        <th><a href="~/Home/MenuSorted?column=Name">Name</a></th>
+        <th><a href="~/Home/MenuSorted?column=Description">Description</a></th>
+        <th><a href="~/Home/MenuSorted?column=Quantity">Quantity</a></th>
+        <th><a href="~/Home/MenuSorted?column=Price">Price</a></th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (Item b in ViewBag.Items)
+    {
+        <tr>
+            <td>@b.ID</td>
+            <td>@b.Name</td>
+            <td>@b.Description</td>
+            <td>@b.Quantity</td>
+            <td>@b.Price</td>
+
+            <td>
+                <a href="~/Home/Add?id=@b.ID"
+                   class="btn btn-primary">Add to Bag</a>
+            </td>
+        </tr>
+    }
+</table>

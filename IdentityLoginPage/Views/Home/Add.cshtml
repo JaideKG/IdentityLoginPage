@@ -1,0 +1,19 @@
+﻿@using IdentityLoginPage.Models;
+@{
+                /**/
+
+                ViewBag.Title = "Add";
+}
+
+<h2>Item Added</h2>
+
+Cart:
+<ul>
+    @foreach (Item b in (List<Item>)(Session["Cart"]))
+    {
+        <li>@b.ID by @b.Name</li>
+
+    }
+</ul>
+<a href="/Home/Menu/">Back to list</a>
+@*<a href="" class="http://localhost:55420/Home/Menu">*@
